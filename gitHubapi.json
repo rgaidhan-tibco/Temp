@@ -1,0 +1,143 @@
+{
+  "openapi": "3.0.3",
+  "info": {  
+    "title": "TIBCO Cloud Integration  Sample",
+    "description": "",
+    "contact": {
+      "email": "you@your-company.com"
+    },
+    "version": "1"
+  },
+  "tags": [
+    {
+      "name": "user"
+    }
+  ],
+  "paths": {
+    "/abc": {
+      "put": {
+        "summary": "Add inventory item",
+        "description": "post the data",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "header",
+            "description": "user id",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "0"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application: json": {
+              "schema": {
+                "summary": "Current API",
+                "$ref": "#/components/schemas/success"
+              }
+            }
+          }
+        },
+        "responses": {
+          "100": {
+            "description": "bad value",
+            "content": {
+              "application: json": {
+                "schema": {
+                  "summary": "Current API",
+                  "$ref": "#/components/schemas/schema1"
+                },
+                "example": {
+                  "name": "ab"
+                }
+              }
+            },
+            "headers": {
+              "first": {
+                "schema": {
+                  "type": "string",
+                  "default": "abc"
+                },
+                "description": "first header"
+              }
+            }
+          },
+          "200": {
+            "description": "success response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/success"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "22",
+        "security": [
+          {
+            "basicauth": []
+          }
+        ],
+        "tags": [
+          "user"
+        ]
+      },
+      "get": {
+        "summary": "searches inventory",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "success response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/success"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "success": {
+        "type": "object",
+        "properties": {
+          "msg": {
+            "type": "string"
+          }
+        },
+        "description": "bad value",
+        "example": {
+          "id": 2
+        }
+      },
+      "schema1": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "default": 2
+          }
+        },
+        "description": "bad value",
+        "example": {
+          "id": 2
+        }
+      }
+    },
+    "securitySchemes": {
+      "basicauth": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    }
+  }
+}
