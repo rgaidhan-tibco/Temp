@@ -1,0 +1,25 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+      "title": "TIBCO Cloud Integration  Sample",
+      "description": "",
+      "contact": {
+        "email": "you@your-company.com"
+      },
+      "version": "1.0"
+    },
+    "tags": [],
+    "paths": {},
+    "components": {
+      "schemas": {
+        "success": {
+          "type": "object",
+          "properties": {
+            "msg": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
