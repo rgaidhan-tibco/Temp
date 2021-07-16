@@ -1,0 +1,328 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Account",
+    "x-lastModified": "17 June 2021 3:56:47 pm (India Standard Time)"
+  },
+  "paths": {
+    "/account/user/{id}{name}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "$ref": "#/definitions/GetUserSchema"
+            },
+            "examples": {
+              "application/json": {
+                "name": "test",
+                "email": "test@gmail.com",
+                "phone": 123456789
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/GetUserFailed"
+            },
+            "examples": {
+              "application/json": {
+                "msg": "Enter Valid UserID"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "operation",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": ""
+            }
+          },
+          {
+            "name": "id}{name",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "operationId": "getAccountUser_userId",
+        "description": "Get User by Id",
+        "summary": "Get User by Id"
+      },
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id}{name",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "operationId": "postAccountUser"
+      },
+      "put": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "101": {
+            "description": "decs",
+            "schema": {
+              "$ref": "#/definitions/UserCreationSuccess"
+            }
+          },
+          "200": {
+            "description": "Success response"
+          },
+          "302": {
+            "description": "desc",
+            "schema": {
+              "$ref": "#/definitions/GiveNewSchemaNameHere"
+            },
+            "examples": {
+              "application/json": {
+                "id": 2
+              }
+            }
+          },
+          "401": {
+            "description": "desc",
+            "schema": {
+              "$ref": "#/definitions/NewUserSchema"
+            }
+          },
+          "500": {
+            "description": "desc",
+            "schema": {
+              "$ref": "#/definitions/GiveNewSchemaNameHere"
+            },
+            "examples": {
+              "application/json": {
+                "id": 2
+              }
+            }
+          },
+          "504": {
+            "description": "des",
+            "schema": {
+              "$ref": "#/definitions/GetUserFailed"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id}{name",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "operationId": "putAccountUser_id"
+      }
+    },
+    "/account/{id}": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "$ref": "#/definitions/LoginSuccessSchema"
+            },
+            "examples": {
+              "application/json": {
+                "msg": "Successfully Logged in"
+              }
+            }
+          },
+          "400": {
+            "description": "bad request",
+            "schema": {
+              "$ref": "#/definitions/LoginFailedSchema"
+            },
+            "examples": {
+              "application/json": {
+                "msg": "Invalid Username/password"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "username",
+            "in": "header",
+            "description": "Username of User",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "default": "test01"
+          },
+          {
+            "name": "password",
+            "in": "header",
+            "description": "Password of User Account",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "default": 12345
+          },
+          {
+            "name": "name2",
+            "in": "header",
+            "description": "user name",
+            "required": true,
+            "type": "string",
+            "format": "password",
+            "default": "ss"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/newSchma"
+            }
+          },
+          {
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "name": "id"
+          }
+        ],
+        "operationId": "postAccountLogin",
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Login User",
+        "summary": "Login User"
+      }
+    }
+  },
+  "definitions": {
+    "NewUserSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "default": "test"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "default": "test@gmail.com"
+        },
+        "phone": {
+          "type": "integer",
+          "default": 123445679
+        }
+      }
+    },
+    "UserCreationSuccess": {
+      "type": "object",
+      "properties": {
+        "msg": {
+          "type": "string",
+          "default": "User successfully created"
+        }
+      }
+    },
+    "GetUserSchema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "default": "test"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "default": "test@gmail.com"
+        },
+        "phone": {
+          "type": "integer",
+          "default": 123456789
+        }
+      }
+    },
+    "GetUserFailed": {
+      "type": "object",
+      "properties": {
+        "msg": {
+          "type": "string",
+          "default": "Enter Valid UserID"
+        }
+      }
+    },
+    "UserLoginSchema": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "default": "test01"
+        },
+        "password": {
+          "type": "string",
+          "default": "1234"
+        }
+      }
+    },
+    "LoginSuccessSchema": {
+      "type": "object",
+      "properties": {
+        "msg": {
+          "type": "string",
+          "default": "Successfully Logged in"
+        }
+      }
+    },
+    "LoginFailedSchema": {
+      "type": "object",
+      "properties": {
+        "msg": {
+          "type": "string",
+          "default": "Invalid Username/password"
+        }
+      }
+    },
+    "GiveNewSchemaNameHere": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "default": 2
+        }
+      }
+    },
+    "newSchma": {}
+  }
+}
